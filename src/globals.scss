@@ -14,10 +14,19 @@
 	--warning: oklch(0.7 0.12 100);
 	--success: oklch(0.7 0.12 160);
 	--info: oklch(0.7 0.12 260);
+
+	--margin-mini: .5rem;
+	--margin-sm: 1rem;
+	--margin-md: 2rem;
+	--margin-lg: 3rem;
 }
 
 *:where(h1,h2,h3,h4,h5,p,a){
 	color: var(--text);
+}
+
+p{
+	font-size: 1.1rem !important;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -67,4 +76,23 @@ table {
 h1{
 	font-size: clamp(26px, 6vw, 36px);
 	font-weight: 800;
+}
+
+h2{
+	font-size: clamp(22px, 5vw, 28px);
+	font-weight: 600;
+}
+
+h3{
+	font-size: clamp(20px, 4vw, 25px);
+	font-weight: 600;
+}
+
+p.muted, a.muted{
+	color:var(--text-muted);
+}
+
+
+.layoutScreen{
+	display: flex;
 }

@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
+import Sidebar from "./components/sidebar/Sidebar";
 
 export default function Layout(){
     return(
         <div className="layoutScreen">
-            <h1>This is the layout!</h1>
+            <Sidebar />
             <Outlet />
         </div>
     )

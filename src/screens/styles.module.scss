@@ -1,5 +1,7 @@
 .homeScreen{
     height: 100dvh;
-    height: 100dvw;
+    width: 100dvw;
+    display: grid;
+    place-content: center;
     background-color: var(--bg-dark);
 }
