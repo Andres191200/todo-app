@@ -1,3 +1,9 @@
+@font-face{
+	font-family: 'dm-sans';
+	src: url('../public/fonts/dmsans/dmsans/dmsans.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
 
 :root{
 	--bg-dark: oklch(0.1 0.06 233);
@@ -21,8 +27,10 @@
 	--margin-lg: 3rem;
 }
 
+
 *:where(h1,h2,h3,h4,h5,p,a){
 	color: var(--text);
+	font-family: 'dm-sans' !important;
 }
 
 p{
