@@ -10,7 +10,7 @@
 	--bg: oklch(0.15 0.06 233);
 	--bg-light: oklch(0.2 0.06 233);
 	--text: oklch(0.96 0.1 233);
-	--text-muted: oklch(0.76 0.1 233);
+	--text-muted: oklch(0.6 0.1 233);
 	--highlight: oklch(0.5 0.12 233);
 	--border: oklch(0.4 0.12 233);
 	--border-muted: oklch(0.3 0.12 233);
@@ -25,12 +25,27 @@
 	--margin-sm: 1rem;
 	--margin-md: 2rem;
 	--margin-lg: 3rem;
+
+	--black-to-text-color: brightness(0) saturate(100%) invert(99%) sepia(14%) saturate(3403%) hue-rotate(160deg) brightness(102%) contrast(101%);
+	--black-to-text-muted-color: brightness(0) saturate(100%) invert(58%) sepia(8%) saturate(3085%) hue-rotate(155deg) brightness(81%) contrast(92%);
 }
 
 
-*:where(h1,h2,h3,h4,h5,p,a){
+*:where(h1,h2,h3,h4,h5,p,a,span){
 	color: var(--text);
 	font-family: 'dm-sans' !important;
+
+	&.big{
+		font-size: 2rem !important;
+	}
+
+	&.bold{
+		font-weight: 800;
+	}
+}
+
+img{
+	max-width: 100%;
 }
 
 p{

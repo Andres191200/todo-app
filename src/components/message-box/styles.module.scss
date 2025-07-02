@@ -1,0 +1,28 @@
+@mixin flex-centered{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--margin-sm);
+}
+
+.messageBoxComponent{
+    @include flex-centered();
+    width: max-content;
+    padding:var(--margin-md);
+    border-radius: var(--margin-sm);
+    background-color: var(--bg-light);
+}
+
+.messageBoxContainer{
+    @include flex-centered();
+    span{
+        font-size: 1.25rem;  
+        color: var(--text-muted);
+    }
+
+    img{
+        height: 2.5rem;
+        aspect-ratio: 1/1;
+        filter: var(--black-to-text-muted-color);
+    }
+}
