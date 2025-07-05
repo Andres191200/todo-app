@@ -1,6 +1,6 @@
 @font-face{
 	font-family: 'dm-sans';
-	src: url('../public/fonts/dmsans/dmsans/dmsans.ttf') format('truetype');
+	src: url('/fonts/dmsans/dmsans/dmsans.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -31,7 +31,7 @@
 }
 
 
-*:where(h1,h2,h3,h4,h5,p,a,span){
+*:where(h1,h2,h3,h4,h5,p,a,span,input){
 	color: var(--text);
 	font-family: 'dm-sans' !important;
 
