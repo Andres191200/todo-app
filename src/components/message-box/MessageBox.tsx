@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
+import '../../declaration.d.ts';
 
 enum EMessageBoxIcons {
   info,
@@ -32,7 +33,7 @@ export default function MessageBox({ message, kind }: TMessageBoxProps) {
           <img src={getPath(kind)} alt="info icon" className={styles.icon} />
         ) : null}
 
-        <span className="big">{message}</span>
+        <span>{message}</span>
       </div>
     </div>
   );

@@ -1,0 +1,33 @@
+.textFieldComponent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    input{
+        padding:var(--margin-md) var(--margin-sm);
+        width: 20vw;
+        border-radius: var(--margin-sm);
+        background-color: var(--bg-light);
+        border:none;
+
+        &:not(&:placeholder-shown) + span{
+            display: none;
+        }   
+
+        &:focus{
+            border: none;
+            outline: none;
+        }
+
+        &+span{
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+            left:var(--margin-sm);
+        }
+    }
+}
+
+    .inputContainer{
+        position:relative;
+    }
