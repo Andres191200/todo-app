@@ -1,33 +1,48 @@
-.textFieldComponent{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    input{
-        padding:var(--margin-md) var(--margin-sm);
-        width: 20vw;
-        border-radius: var(--margin-sm);
-        background-color: var(--bg-light);
-        border:none;
+.textFieldComponent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-        &:not(&:placeholder-shown) + span{
-            display: none;
-        }   
+  input {
+    padding: var(--margin-md) var(--margin-sm);
+    width: 20vw;
+    border-radius: var(--margin-sm);
+    background-color: var(--bg-light);
+    border: none;
+    font-size: 1.5rem;
+    transition: box-shadow 250ms ease;
+    box-shadow: none;
 
-        &:focus{
-            border: none;
-            outline: none;
-        }
-
-        &+span{
-            position:absolute;
-            top:50%;
-            transform:translateY(-50%);
-            left:var(--margin-sm);
-        }
+    &:hover, &:not(&:placeholder-shown) {
+      box-shadow: rgba(243, 39, 209, 0.5) 0px 0px 30px 5px;
     }
+
+    &:not(&:placeholder-shown) + span {
+      display: none;
+    }
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
+    &:placeholder-shown + .placeholderWrapper {
+      opacity: 1;
+      position: absolute;
+      font-size: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      left: var(--margin-sm);
+    }
+  }
 }
 
-    .inputContainer{
-        position:relative;
-    }
+.inputContainer {
+  position: relative;
+}
+
+.placeholderWrapper {
+  // position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
