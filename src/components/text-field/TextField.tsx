@@ -2,24 +2,18 @@ import { TypeAnimation } from "react-type-animation";
 import "../../declaration.d.ts";
 import styles from "./styles.module.scss";
 
-var typingSequence: any[] = [
-  "Do the dishes",
-  1000,
-  "Take the dog for a walk",
-  1000,
-  "Feed the cat",
-  1000,
-  "Do the homework",
-  1000
-];
+type TTextField = {
+  placeholderSequence: any[],
+  onChange: (event:React.ChangeEvent<HTMLInputElement>) => void,
+}
 
-export default function TextField() {
+export default function TextField({placeholderSequence, onChange}: TTextField) {
   return (
     <div className={styles.textFieldComponent}>
       <div className={styles.inputContainer}>
-        <input type="text" placeholder="" />
+        <input type="text" placeholder="" onChange={onChange}/>
         <div className={styles.placeholderWrapper}>
-          <TypeAnimation sequence={typingSequence} wrapper="span" repeat={Infinity}/>
+          <TypeAnimation sequence={placeholderSequence} wrapper="span" repeat={Infinity}/>
         </div>
       </div>
     </div>
