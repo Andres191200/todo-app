@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import { TypeAnimation } from "react-type-animation";
 import TextField from "../text-field/TextField";
 import MessageBox from "../message-box/MessageBox";
+import TextArea from "../text-area/TextArea";
 
 var typingSequence: any[] = [
   "Do the dishes",
@@ -27,7 +28,7 @@ export default function TodoForm() {
         placeholderSequence={typingSequence}
         onChange={(event) => handleChange(event)}
       />
-      {inputValue ? <MessageBox message="show description input" /> : null}
+      {inputValue ? <TextArea /> : null}
     </div>
   );
 }
