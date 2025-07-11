@@ -31,7 +31,7 @@
 }
 
 
-*:where(h1,h2,h3,h4,h5,p,a,span,input){
+*:where(h1,h2,h3,h4,h5,p,a,span,input, textarea){
 	color: var(--text);
 	font-family: 'dm-sans' !important;
 
@@ -114,6 +114,16 @@ h3{
 p.muted, a.muted{
 	color:var(--text-muted);
 }
+
+.fadeInFromTop {
+      opacity: 1;
+	  transition: all 250ms ease-out;
+
+      @starting-style {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
 
 
 .layoutScreen{

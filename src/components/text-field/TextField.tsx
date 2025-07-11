@@ -2,12 +2,12 @@ import { TypeAnimation } from "react-type-animation";
 import "../../declaration.d.ts";
 import styles from "./styles.module.scss";
 
-type TTextField = {
+type TTextFieldProps = {
   placeholderSequence: any[],
   onChange: (event:React.ChangeEvent<HTMLInputElement>) => void,
 }
 
-export default function TextField({placeholderSequence, onChange}: TTextField) {
+export default function TextField({placeholderSequence, onChange}: TTextFieldProps) {
   return (
     <div className={styles.textFieldComponent}>
       <div className={styles.inputContainer}>
