@@ -31,7 +31,7 @@
 }
 
 
-*:where(h1,h2,h3,h4,h5,p,a,span,input, textarea){
+*:where(h1,h2,h3,h4,h5,p,a,span,input, textarea, button){
 	color: var(--text);
 	font-family: 'dm-sans' !important;
 

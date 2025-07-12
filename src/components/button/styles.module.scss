@@ -1,0 +1,16 @@
+.buttonComponent{
+    button{
+        width: 100%;
+        padding: var(--margin-sm);
+        border-radius: var(--margin-sm);
+        color:var(--bg-dark);
+        font-size: 1rem;
+        font-weight: 800;
+        background-color: var(--primary);
+        cursor: pointer;
+        
+        &:hover{
+            background-color: var(--text);
+        }
+    }
+}

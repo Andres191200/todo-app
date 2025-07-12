@@ -1,12 +1,12 @@
 .textFieldComponent {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
 
   input {
     padding: var(--margin-md) var(--margin-sm);
-    width: 20vw;
+    width: 100%;
     border-radius: var(--margin-sm);
+    box-sizing: border-box;
     background-color: var(--bg-light);
     border: none;
     font-size: 1.5rem;
@@ -38,11 +38,12 @@
 }
 
 .inputContainer {
+  width: 100%;
   position: relative;
 }
 
 .placeholderWrapper {
-  // position: absolute;
+  position: absolute;
   opacity: 0;
   pointer-events: none;
 }

@@ -1,16 +1,26 @@
 import React, { ReactHTMLElement } from "react";
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 import "../../declaration.d.ts";
 
 type TButtonProps = {
-    onClick: () => void;
-    label: string;
+  onButtonClick: (data: any) => void;
+  label: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function Button<TButtonProps>({ onClick, label, ...rest}) {
+export default function Button({
+  onButtonClick,
+  label,
+  ...rest
+}: TButtonProps) {
   return (
     <div className={styles.buttonComponent}>
-      <button className={styles.button} {...rest}>
+      <button
+        className={styles.button}
+        {...rest}
+        onClick={(event: React.MouseEvent<HTMLButtonElement, Event>) =>
+          onButtonClick((event.target))
+        }
+      >
         {label}
       </button>
     </div>

@@ -13,32 +13,48 @@ var typingSequence: any[] = [
   1000,
   "Do the homework",
   1000,
-];
+] as const;
+
+type TFormFields = {
+  title: string,
+  description: string,
+}
 
 export default function TodoForm() {
-  const [inputValue, setInputValue] = useState<String | null>(null);
+  const [form, setForm] = useState<TFormFields>({
+    title: '',
+    description: '',
+  });
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const { value } = event.target;
-    setInputValue(value);
+  function handleDescriptionChange(event: React.ChangeEvent<HTMLTextAreaElement>){
+    setForm(prevFormState => ({...prevFormState, 'description': event.target.value}) satisfies TFormFields);
+  }
+  
+  function handleTitleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setForm(prevFormState => ({...prevFormState, 'title': event.target.value}) satisfies TFormFields);
+  }
+
+  function submitTodo(){
+    console.log('title: ', form.title);
+    console.log('description: ', form.description);
   }
 
   return (
     <div className={styles.todoFormComponent}>
       <TextField
         placeholderSequence={typingSequence}
-        onChange={(event) => handleChange(event)}
+        onChange={(event) => handleTitleChange(event)}
       />
-      {inputValue ? (
+      {form.title ? (
         <div className="fadeInFromTop">
-          <TextArea />
+          <TextArea onChange={(event) => handleDescriptionChange(event)}/>
         </div>
       ) : null}
-      {inputValue ? (
+      {form.title ? (
         <Button
           label="Create"
-          onClick={(data: any) => {
-            console.log("data: ", data);
+          onButtonClick={(data: React.MouseEvent<HTMLButtonElement, Event>) => {
+            submitTodo();
           }}
         />
       ) : null}
