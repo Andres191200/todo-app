@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
-import { TypeAnimation } from "react-type-animation";
 import TextField from "../text-field/TextField";
-import MessageBox from "../message-box/MessageBox";
 import TextArea from "../text-area/TextArea";
+import Button from "../button/Button";
 
 var typingSequence: any[] = [
   "Do the dishes",
@@ -14,21 +13,51 @@ var typingSequence: any[] = [
   1000,
   "Do the homework",
   1000,
-];
+] as const;
+
+type TFormFields = {
+  title: string,
+  description: string,
+}
 
 export default function TodoForm() {
-  const [inputValue, setInputValue] = useState<String | null>(null);
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const { value } = event.target;
-    setInputValue(value);
+  const [form, setForm] = useState<TFormFields>({
+    title: '',
+    description: '',
+  });
+
+  function handleDescriptionChange(event: React.ChangeEvent<HTMLTextAreaElement>){
+    setForm(prevFormState => ({...prevFormState, 'description': event.target.value}) satisfies TFormFields);
   }
+  
+  function handleTitleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setForm(prevFormState => ({...prevFormState, 'title': event.target.value}) satisfies TFormFields);
+  }
+
+  function submitTodo(){
+    console.log('title: ', form.title);
+    console.log('description: ', form.description);
+  }
+
   return (
     <div className={styles.todoFormComponent}>
       <TextField
         placeholderSequence={typingSequence}
-        onChange={(event) => handleChange(event)}
+        onChange={(event) => handleTitleChange(event)}
       />
-      {inputValue ? <TextArea /> : null}
+      {form.title ? (
+        <div className="fadeInFromTop">
+          <TextArea onChange={(event) => handleDescriptionChange(event)}/>
+        </div>
+      ) : null}
+      {form.title ? (
+        <Button
+          label="Create"
+          onButtonClick={(data: React.MouseEvent<HTMLButtonElement, Event>) => {
+            submitTodo();
+          }}
+        />
+      ) : null}
     </div>
   );
 }

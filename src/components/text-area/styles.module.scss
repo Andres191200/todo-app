@@ -1,27 +1,24 @@
-.textAreaComponent{
-    textarea{
-        border: none;
-        font-size: 1.25rem;
-        resize: none;
-        width: 100%;
-        padding:var(--margin-sm);
-        border-radius: var(--margin-sm);
-        box-sizing: border-box;
-        background-color: var(--bg-light);
-        color: var(--text);
-        margin-top:var(--margin-md);
-        field-sizing: content;
-        transition: all 250ms ease-out allow-discrete;
-        opacity: 1;
+.textAreaComponent {
+  textarea {
+    border: none;
+    font-size: 1.25rem;
+    resize: none;
+    width: 100%;
+    padding: var(--margin-sm);
+    border-radius: var(--margin-sm);
+    box-sizing: border-box;
+    background-color: var(--bg-light);
+    color: var(--text);
+    field-sizing: content;
 
-        @starting-style{
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-
-        &:focus, &:active{
-            border: none;
-            outline: none;
-        }
+    &::placeholder {
+      color: var(--text-muted);
     }
+
+    &:focus,
+    &:active {
+      border: none;
+      outline: none;
+    }
+  }
 }
