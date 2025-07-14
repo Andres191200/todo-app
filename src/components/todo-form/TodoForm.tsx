@@ -16,38 +16,52 @@ var typingSequence: any[] = [
 ] as const;
 
 type TFormFields = {
-  title: string,
-  description: string,
-}
+  title: string;
+  description: string;
+};
 
 export default function TodoForm() {
   const [form, setForm] = useState<TFormFields>({
-    title: '',
-    description: '',
+    title: "",
+    description: "",
   });
 
-  function handleDescriptionChange(event: React.ChangeEvent<HTMLTextAreaElement>){
-    setForm(prevFormState => ({...prevFormState, 'description': event.target.value}) satisfies TFormFields);
-  }
-  
-  function handleTitleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setForm(prevFormState => ({...prevFormState, 'title': event.target.value}) satisfies TFormFields);
+  function handleDescriptionChange(
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) {
+    setForm(
+      (prevFormState) =>
+        ({
+          ...prevFormState,
+          description: event.target.value,
+        } satisfies TFormFields)
+    );
   }
 
-  function submitTodo(){
-    console.log('title: ', form.title);
-    console.log('description: ', form.description);
+  function handleTitleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setForm(
+      (prevFormState) =>
+        ({ ...prevFormState, title: event.target.value } satisfies TFormFields)
+    );
+  }
+
+  function submitTodo() {
+    console.log("title: ", form.title);
+    console.log("description: ", form.description);
   }
 
   return (
     <div className={styles.todoFormComponent}>
-      <TextField
-        placeholderSequence={typingSequence}
-        onChange={(event) => handleTitleChange(event)}
-      />
+      <div className={styles.textFieldContainer}>
+        <TextField
+          placeholderSequence={typingSequence}
+          onChange={(event) => handleTitleChange(event)}
+        />
+      </div>
+
       {form.title ? (
         <div className="fadeInFromTop">
-          <TextArea onChange={(event) => handleDescriptionChange(event)}/>
+          <TextArea onChange={(event) => handleDescriptionChange(event)} />
         </div>
       ) : null}
       {form.title ? (
