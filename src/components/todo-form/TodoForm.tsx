@@ -20,7 +20,11 @@ type TFormFields = {
   description: string;
 };
 
-export default function TodoForm() {
+type TTodoForm = {
+  onComplete: (title: string, subtitle?: string) => void;
+}
+
+export default function TodoForm({onComplete} : TTodoForm) {
   const [form, setForm] = useState<TFormFields>({
     title: "",
     description: "",
@@ -46,8 +50,7 @@ export default function TodoForm() {
   }
 
   function submitTodo() {
-    console.log("title: ", form.title);
-    console.log("description: ", form.description);
+    onComplete(form.title, form.description);
   }
 
   return (

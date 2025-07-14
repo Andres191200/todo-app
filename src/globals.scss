@@ -30,6 +30,10 @@
 	--black-to-text-muted-color: brightness(0) saturate(100%) invert(58%) sepia(8%) saturate(3085%) hue-rotate(155deg) brightness(81%) contrast(92%);
 }
 
+button{
+	font-size: 1.25rem !important;
+}
+
 *:where(h1,h2,h3,h4,h5,p,a,span,input, textarea, button){
 	color: var(--text);
 	font-family: 'dm-sans' !important;
