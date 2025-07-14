@@ -1,6 +1,17 @@
-.todoFormComponent{
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    gap: var(--margin-md);
+.todoFormComponent {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-md);
+}
+
+.textFieldContainer{
+    transition: box-shadow 250ms ease;
+    box-shadow: none;
+    background-color: transparent;
+    border-radius: var(--margin-sm);
+}
+
+.textFieldContainer:has(input:hover, input:not(input:placeholder-shown)) {
+  box-shadow: rgba(243, 39, 209, 0.5) 0px 0px 30px 5px;
 }
