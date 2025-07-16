@@ -1,0 +1,7 @@
+.todoCardComponent{
+    display: flex;
+    flex-direction: column;
+    gap:var(--margin-md);
+    padding: var(--margin-sm);
+    background-color: var(--bg);
+}
