@@ -8,7 +8,8 @@ export default function TodoCard({todo}: {todo: Todo}) {
   return (
     <div className={styles.todoCardComponent}>
         <h4>{todo.title}</h4>
-        <p>{todo.description}</p>
+        <div className={styles.separator} />
+        <p>{todo.description || 'No description'}</p>
     </div>
   )
 }
