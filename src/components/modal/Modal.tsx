@@ -14,9 +14,19 @@ export default function Modal({
 }: PropsWithChildren<TModal>) {
   const modalRef = useRef<HTMLDialogElement>(null);
 
-  if (!isOpen) {
-    return null;
-  }
+    useEffect(() => {
+    const dialog = modalRef.current;
+
+    if (!dialog) return;
+
+    if (isOpen && !dialog.open) {
+      dialog.showModal(); 
+    }
+
+    else if (!isOpen && dialog.open) {
+      dialog.close();
+    }
+  }, [isOpen, onClose]);
 
   return (
     <dialog className={styles.modalComponent} ref={modalRef}>

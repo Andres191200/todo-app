@@ -114,6 +114,14 @@ h3{
 	font-weight: 600;
 }
 
+h4{
+	font-size: clamp(20px, 4vw, 25px);
+	font-weight: 400;
+}
+
+
+
+
 p.muted, a.muted{
 	color:var(--text-muted);
 }
