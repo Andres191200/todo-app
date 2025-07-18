@@ -7,6 +7,7 @@ import { Todo } from "../models/todo.ts";
 import TodoCard from "../components/todo-card/TodoCard.tsx";
 import Button from "../components/button/Button.tsx";
 import Modal from "../components/modal/Modal.tsx";
+import TodosGrid from "../components/todos-grid/TodosGrid.tsx";
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -35,17 +36,13 @@ export default function Home() {
         </Modal>
       ) : null}
       {todos.length > 0 ? (
-        <div className={styles.todosContainer}>
-          <div className={styles.todosGrid}>
-            {todos.map((todo) => (
-              <TodoCard todo={todo} />
-            ))}
-          </div>
+        <>
+          <TodosGrid todos={todos} />
           <Button
             label="new todo"
             onButtonClick={() => setIsModalOpen((prevState) => !prevState)}
           />
-        </div>
+        </>
       ) : (
         <>
           <h1>Welcome to a simple ToDo App!</h1>

@@ -1,5 +1,5 @@
 .homeScreen {
-  height: 100dvh;
+  min-height: 100dvh;
   width: 100dvw;
   display: flex;
   align-items: center;
@@ -13,18 +13,3 @@
   font-size: 1.3rem !important;
 }
 
-.todosContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  width: 100%;
-  padding-block: var(--margin-md);
-}
-
-.todosGrid {
-  width: 100%;
-  display: grid;
-  align-items: start;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-}
