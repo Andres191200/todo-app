@@ -3,6 +3,9 @@ import styles from "./styles.module.scss";
 import TextField from "../text-field/TextField";
 import TextArea from "../text-area/TextArea";
 import Button from "../button/Button";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { todoSchema, TTodoForm } from "../../schemas/todo";
 
 var typingSequence: any[] = [
   "Do the dishes",
@@ -20,11 +23,18 @@ type TFormFields = {
   description: string;
 };
 
-type TTodoForm = {
+type TTodoFormProps = {
   onComplete: (title: string, subtitle?: string) => void;
 }
 
-export default function TodoForm({onComplete} : TTodoForm) {
+export default function TodoForm({onComplete} : TTodoFormProps) {
+  const {
+    register,
+    handleSubmit,
+    formState: {errors} 
+  } = useForm<TTodoForm>({
+    resolver: zodResolver(todoSchema)
+  })
   const [form, setForm] = useState<TFormFields>({
     title: "",
     description: "",
