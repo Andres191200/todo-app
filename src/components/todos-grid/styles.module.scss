@@ -1,0 +1,15 @@
+.todosContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding-block: var(--margin-md);
+}
+
+.todosGrid {
+  width: 100%;
+  display: grid;
+  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+}

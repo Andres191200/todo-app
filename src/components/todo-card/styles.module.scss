@@ -1,16 +1,22 @@
 .todoCardComponent{
     display: flex;
     flex-direction: column;
-    gap:var(--margin-md);
+    gap:var(--margin-sm);
     padding: var(--margin-sm);
     height: 300px;
     width: 300px;
     border-radius: var(--margin-sm);
     margin:var(--margin-md);
     background-color: var(--bg);
+    overflow-y: auto;
 
+  scrollbar-color: var(--bg-light) var(--bg);
+  scrollbar-width: thin;
     p{
+        line-height: 135%;
         color:var(--text-muted);
+        word-wrap: break-word;
+        text-overflow: ellipsis;
     }
 }
 
