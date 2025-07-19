@@ -8,10 +8,16 @@ import TodoCard from "../components/todo-card/TodoCard.tsx";
 import Button from "../components/button/Button.tsx";
 import Modal from "../components/modal/Modal.tsx";
 import TodosGrid from "../components/todos-grid/TodosGrid.tsx";
+import useLocalStorage from "../hooks/useLocalStorage.ts";
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { setItem } = useLocalStorage();
+
+  useEffect(() => {
+    setItem('todos', todos);
+  }, [todos])
 
   return (
     <div className={styles.homeScreen}>

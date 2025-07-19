@@ -67,6 +67,7 @@ export default function TodoForm({onComplete} : TTodoFormProps) {
     <div className={styles.todoFormComponent}>
       <div className={styles.textFieldContainer}>
         <TextField
+          zodRegister={register("title")}
           placeholderSequence={typingSequence}
           onChange={(event) => handleTitleChange(event)}
         />
