@@ -53,7 +53,7 @@ export default function Home() {
         <>
           <h1>Welcome to a simple ToDo App!</h1>
           <p className={styles.subtitle}>
-            Create your first To Do right away :)
+            Create<span className="highlight bold"> your first To Do </span> right away :)
           </p>
           <TodoForm
             onComplete={(title, description) =>

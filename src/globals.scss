@@ -16,6 +16,7 @@
 	--border-muted: oklch(0.3 0.12 233);
 	--primary: oklch(0.76 0.12 233);
 	--secondary: oklch(0.76 0.12 53);
+	--tertiary: oklch(77.848% 0.14665 52.758);
 	--danger: oklch(0.7 0.12 30);
 	--warning: oklch(0.7 0.12 100);
 	--success: oklch(0.7 0.12 160);
@@ -44,6 +45,10 @@ button{
 
 	&.bold{
 		font-weight: 800;
+	}
+
+	&.highlight{
+		color: var(--tertiary);
 	}
 }
 

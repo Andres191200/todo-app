@@ -7,6 +7,10 @@
   justify-content: center;
   gap: var(--margin-md);
   background-color: var(--bg-dark);
+
+  p{
+    display: inline;
+  }
 }
 
 .subtitle {
