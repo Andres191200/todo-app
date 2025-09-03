@@ -5,36 +5,20 @@ import TextArea from "../text-area/TextArea";
 import Button from "../button/Button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { todoSchema, TTodoForm } from "../../schemas/todo";
-
-var typingSequence: any[] = [
-  "Do the dishes",
-  1000,
-  "Take the dog for a walk",
-  1000,
-  "Feed the cat",
-  1000,
-  "Do the homework",
-  1000,
-] as const;
-
-type TFormFields = {
-  title: string;
-  description: string;
-};
-
-type TTodoFormProps = {
-  onComplete: (title: string, subtitle?: string) => void;
-}
+import { todoSchema, TTodoForm } from "./schemas/todo";
+import { TTodoFormProps } from "./models/todo-form-props";
+import { TFormFields } from "./models/form-fields";
+import { typingSequence } from "./utils/typing-sequence";
 
 export default function TodoForm({onComplete} : TTodoFormProps) {
+  
   const {
     register,
-    handleSubmit,
     formState: {errors} 
   } = useForm<TTodoForm>({
     resolver: zodResolver(todoSchema)
-  })
+  });
+
   const [form, setForm] = useState<TFormFields>({
     title: "",
     description: "",
@@ -48,7 +32,7 @@ export default function TodoForm({onComplete} : TTodoFormProps) {
         ({
           ...prevFormState,
           description: event.target.value,
-        } satisfies TFormFields)
+        }satisfies TFormFields)
     );
   }
 
@@ -82,6 +66,7 @@ export default function TodoForm({onComplete} : TTodoFormProps) {
         <Button
           label="Create"
           onButtonClick={(data: React.MouseEvent<HTMLButtonElement, Event>) => {
+            // USE USEFORM HANDLESUBMIT BUILT IN FUNCTION? TEST
             submitTodo();
           }}
         />
