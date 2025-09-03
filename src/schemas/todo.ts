@@ -1,0 +1,8 @@
+import {z} from "zod";
+
+export const todoSchema = z.object({
+    title: z.string().min(1, "Title cannot be empty"),
+    description: z.string().optional(),
+});
+
+export type TTodoForm = z.infer<typeof todoSchema>;
