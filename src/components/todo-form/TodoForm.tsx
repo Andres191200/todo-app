@@ -14,7 +14,6 @@ export default function TodoForm({onComplete} : TTodoFormProps) {
   
   const {
     register,
-    formState: {errors} 
   } = useForm<TTodoForm>({
     resolver: zodResolver(todoSchema)
   });

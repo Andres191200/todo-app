@@ -8,16 +8,29 @@ import TodoCard from "../components/todo-card/TodoCard.tsx";
 import Button from "../components/button/Button.tsx";
 import Modal from "../components/modal/Modal.tsx";
 import TodosGrid from "../components/todos-grid/TodosGrid.tsx";
-import useLocalStorage from "../hooks/useLocalStorage.ts";
+import { supabase } from "../supabase-client/supabaseClient.ts";
+import TodosSection from "../components/todos-section/TodosSection.tsx";
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const { setItem } = useLocalStorage();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
-    setItem('todos', todos);
-  }, [todos])
+    supabase.auth.getSession().then(({ data }) => {
+      console.log("data: ", data);
+    });
+    setLoading(false);
+  });
+
+  if (loading) {
+    return (
+      <div className={styles.homeScreen}>
+        <h2>Loading....</h2>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.homeScreen}>
@@ -41,30 +54,16 @@ export default function Home() {
           />
         </Modal>
       ) : null}
-      {todos.length > 0 ? (
-        <>
-          <TodosGrid todos={todos} />
-          <Button
-            label="new todo"
-            onButtonClick={() => setIsModalOpen((prevState) => !prevState)}
-          />
-        </>
-      ) : (
-        <>
-          <h1>Welcome to a simple ToDo App!</h1>
-          <p className={styles.subtitle}>
-            Create<span className="highlight bold"> your first To Do </span> right away :)
-          </p>
-          <TodoForm
-            onComplete={(title, description) =>
-              setTodos((prevTodos) => [
-                ...prevTodos,
-                { title: title, description: description },
-              ])
-            }
-          />
-        </>
-      )}
+      <TodosSection
+        onNewTodoHandleClick={() => setIsModalOpen((prevState) => !prevState)}
+        todos={todos}
+        onCompleteForm={(title:string, description:string) =>
+          setTodos((prevTodos) => [
+            ...prevTodos,
+            { title: title, description: description },
+          ])
+        }
+      />
     </div>
   );
 }
