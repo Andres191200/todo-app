@@ -6,7 +6,6 @@ export default function Auth() {
     <div className={styles.authScreen}>
         <input placeholder='username'></input>
         <input placeholder='password'></input>
-
     </div>
   )
 }

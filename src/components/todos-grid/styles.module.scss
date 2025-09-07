@@ -1,6 +1,7 @@
+@import "../../mixins.scss";
+
 .todosContainer {
-  display: flex;
-  flex-direction: column;
+  @include flexColMdGap();
   justify-content: space-between;
   width: 100%;
   box-sizing: border-box;

@@ -1,0 +1,21 @@
+@mixin flexSmGap {
+  display: flex;
+  gap: var(--margin-sm);
+}
+
+@mixin flexMdGap {
+  display: flex;
+  gap: var(--margin-md);
+}
+
+@mixin flexColSmGap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-sm);
+}
+
+@mixin flexColMdGap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-md);
+}

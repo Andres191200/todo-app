@@ -1,7 +1,7 @@
+@import "../../mixins.scss";
+
 .todoCardComponent{
-    display: flex;
-    flex-direction: column;
-    gap:var(--margin-sm);
+    @include flexColSmGap();
     padding: var(--margin-sm);
     height: 300px;
     width: 300px;

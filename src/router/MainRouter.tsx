@@ -1,19 +1,26 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "../layout";
 import Home from "../screens/home/Home";
 import Auth from "../screens/auth/Auth";
-
+import NotFound from "../screens/not-found/NotFound";
 
 export default function MainRouter() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index path="/" element={<Home />} />
-
-        </Route>
-          <Route index path="/auth" element={<Auth />} />
-      </Routes>
-    </Router>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      errorElement: <NotFound />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+      ],
+    },
+    {
+      path: "/auth",
+      element: <Auth />,
+    },
+  ]);
+  return <RouterProvider router={router} />;
 }

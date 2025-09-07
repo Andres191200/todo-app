@@ -1,14 +1,11 @@
+@import "../../mixins.scss";
+
 .homeScreen {
   min-height: 100dvh;
   width: 100dvw;
-  display: flex;
+  @include flexColMdGap();
   align-items: center;
-  flex-direction: column;
   justify-content: center;
-  gap: var(--margin-md);
   background-color: var(--bg-dark);
 
 }
-
-
-

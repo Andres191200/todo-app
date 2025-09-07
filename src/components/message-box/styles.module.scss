@@ -1,12 +1,9 @@
-@mixin flex-centered{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--margin-sm);
-}
+@import "../../mixins.scss";
 
 .messageBoxComponent{
-    @include flex-centered();
+    @include flexSmGap();
+    align-items: center;
+    justify-content: center;
     width: max-content;
     padding:var(--margin-md);
     border-radius: var(--margin-sm);
@@ -14,7 +11,9 @@
 }
 
 .messageBoxContainer{
-    @include flex-centered();
+    @include flexSmGap();
+    align-items: center;
+    justify-content: center;
     span{
         font-size: 1.5rem;  
         color: var(--text-muted);
