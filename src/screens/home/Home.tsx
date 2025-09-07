@@ -1,15 +1,12 @@
 import styles from "./styles.module.scss";
-import "../declaration.d.ts";
-import TextField from "../components/text-field/TextField.tsx";
-import TodoForm from "../components/todo-form/TodoForm.tsx";
+import TodoForm from "../../components/todo-form/TodoForm.tsx";
 import { useEffect, useRef, useState } from "react";
-import { Todo } from "../models/todo.ts";
-import TodoCard from "../components/todo-card/TodoCard.tsx";
-import Button from "../components/button/Button.tsx";
-import Modal from "../components/modal/Modal.tsx";
-import TodosGrid from "../components/todos-grid/TodosGrid.tsx";
-import { supabase } from "../supabase-client/supabaseClient.ts";
-import TodosSection from "../components/todos-section/TodosSection.tsx";
+import { Todo } from "../../models/todo.ts";
+import TodoCard from "../../components/todo-card/TodoCard.tsx";
+import Button from "../../components/button/Button.tsx";
+import Modal from "../../components/modal/Modal.tsx";
+import { supabase } from "../../supabase-client/supabaseClient.ts";
+import TodosSection from "../../components/todos-section/TodosSection.tsx";
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);

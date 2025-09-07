@@ -35,7 +35,7 @@ button{
 	font-size: 1.25rem !important;
 }
 
-*:where(h1,h2,h3,h4,h5,p,a,span,input, textarea, button){
+*:where(h1,h2,h3,h4,h5,p,span,input, textarea, button){
 	color: var(--text);
 	font-family: 'dm-sans' !important;
 
@@ -49,6 +49,16 @@ button{
 
 	&.highlight{
 		color: var(--tertiary);
+	}
+}
+
+a{
+	color:var(--success);
+	transition: transform 100ms ease;
+
+	&:hover{
+		transform:scale(1.05);
+		transform-origin: bottom;
 	}
 }
 

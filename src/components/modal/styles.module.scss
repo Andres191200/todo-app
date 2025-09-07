@@ -1,8 +1,8 @@
+@import "../../mixins.scss";
+
 .modalComponent {
   position: fixed;
-  display: flex;
-  flex-direction: column;
-  gap: var(--margin-md);
+  @include flexColMdGap();
   margin-left: 50%;
   transform: translate(-30%);
   align-items: center;
