@@ -154,4 +154,11 @@ p.muted, a.muted{
 
 .layoutScreen{
 	display: flex;
+	height: 100dvh;
+	width: 100dvw;
+	background-color: var(--bg-dark);
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
 }

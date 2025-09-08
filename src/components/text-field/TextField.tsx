@@ -17,7 +17,6 @@ export default function TextField({
   zodRegister,
   ...rest
 }: TTextFieldProps) {
-  console.log('squence: ', placeholderSequence);
   return (
     <div className={styles.textFieldComponent}>
       <div className={styles.inputContainer}>
