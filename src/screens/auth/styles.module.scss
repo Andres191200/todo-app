@@ -8,22 +8,11 @@
     height: 100vh;
     width: 100vw;
 
-    input{
-        width: 300px;
-        padding:var(--margin-sm);
-        background-color: var(--bg);
-        border:none;
-    }
-
     button{
         background-color: var(--primary);
         padding: var(--margin-mini) var(--margin-sm);
         border: none;
         color:var(--bg);
 
-    }
-
-    form{
-        @include flexColMdGap();
     }
 }

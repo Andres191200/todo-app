@@ -1,0 +1,5 @@
+@import '../../../mixins.scss';
+    .form{
+        @include flexColMdGap();
+        width: 25%;
+    }
