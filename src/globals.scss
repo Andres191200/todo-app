@@ -68,6 +68,7 @@ img{
 
 p{
 	font-size: 1.1rem !important;
+	line-height: 135% !important;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -134,8 +135,13 @@ h4{
 	font-weight: 400;
 }
 
+p.error{
+	color:var(--danger);
+}
 
-
+p.success{
+	color:var(--success);
+}
 
 p.muted, a.muted{
 	color:var(--text-muted);
@@ -154,4 +160,11 @@ p.muted, a.muted{
 
 .layoutScreen{
 	display: flex;
+	height: 100dvh;
+	width: 100dvw;
+	background-color: var(--bg-dark);
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
 }

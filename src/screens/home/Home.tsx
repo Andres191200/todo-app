@@ -1,27 +1,31 @@
 import styles from "./styles.module.scss";
 import TodoForm from "../../components/todo-form/TodoForm.tsx";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Todo } from "../../models/todo.ts";
 import TodoCard from "../../components/todo-card/TodoCard.tsx";
 import Button from "../../components/button/Button.tsx";
 import Modal from "../../components/modal/Modal.tsx";
 import { supabase } from "../../supabase-client/supabaseClient.ts";
 import TodosSection from "../../components/todos-section/TodosSection.tsx";
+import { redirect, useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [user, setUser] = useState<any>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
-      console.log("data: ", data);
+      if(!data.session){
+        // navigate('/auth');
+      }
+      setLoading(false);
     });
-    setLoading(false);
-  });
+  }, []);
 
-  if (loading) {
+  if (!loading) {
     return (
       <div className={styles.homeScreen}>
         <h2>Loading....</h2>
