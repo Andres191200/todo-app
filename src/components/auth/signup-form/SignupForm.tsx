@@ -6,6 +6,8 @@ import { supabase } from "../../../supabase-client/supabaseClient";
 import { useState } from "react";
 import styles from "./styles.module.scss";
 import { signUpFormErrorHandler } from "./utils/errorHandler";
+import renderToast from "../../toast/Toast";
+import { ECustomization } from "../../toast/models/customization";
 
 export default function SignupForm() {
   const [success, setSuccess] = useState<boolean>(false);
@@ -19,12 +21,19 @@ export default function SignupForm() {
   });
 
   async function onSubmit(data: TSignupForm) {
+    console.log("data: ", data);
     const { error } = await supabase.auth.signUp({
       email: data.username,
       password: data.password,
+      options: {
+        data: {
+          username: data.username,
+        },
+      },
     });
     if (error) {
       setSuccess(false);
+      renderToast({customization: ECustomization.error, message: 'mensajillo de prueba'});
       const handledError = signUpFormErrorHandler(error.message);
       setError(handledError.field, handledError.error);
     } else {
@@ -34,6 +43,12 @@ export default function SignupForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <TextField
+        zodRegister={register("email")}
+        placeholder="Email"
+        type="text"
+        name="email"
+      />
       <TextField
         zodRegister={register("username")}
         placeholder="Username"
@@ -46,14 +61,22 @@ export default function SignupForm() {
         type="password"
         name="password"
       />
+      <TextField
+        zodRegister={register("confirmPassword")}
+        placeholder="Password"
+        type="password"
+        name="confirmPassword"
+      />
 
       <button type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Loading..." : "Signup"}
       </button>
-
-      {errors.username && <p className="error">{errors.username.message}</p>}
-      {errors.password && <p className="error">{errors.password.message}</p>}
-      {success && <p className="success">User registered successfully!</p>}
+      <div className={styles.errors}>
+        {errors.username && <p className="error">{errors.username.message}</p>}
+        {errors.password && <p className="error">{errors.password.message}</p>}
+        {errors.confirmPassword && <p className="error">{errors.confirmPassword.message}</p>}
+        {success && <p className="success">User registered successfully!</p>}
+      </div>
     </form>
   );
 }

@@ -33,6 +33,13 @@
 
 button{
 	font-size: 1.25rem !important;
+	border-radius: var(--margin-sm);
+	padding-block:var(--margin-sm);
+	cursor:pointer;
+
+	&:disabled{
+		background-color: var(--border-muted);
+	}
 }
 
 *:where(h1,h2,h3,h4,h5,p,span,input, textarea, button){
