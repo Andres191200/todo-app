@@ -21,9 +21,8 @@ export default function SignupForm() {
   });
 
   async function onSubmit(data: TSignupForm) {
-    console.log("data: ", data);
     const { error } = await supabase.auth.signUp({
-      email: data.username,
+      email: data.email,
       password: data.password,
       options: {
         data: {
@@ -33,10 +32,11 @@ export default function SignupForm() {
     });
     if (error) {
       setSuccess(false);
-      renderToast({customization: ECustomization.error, message: 'mensajillo de prueba'});
+      renderToast({customization: ECustomization.error, message: error.message});
       const handledError = signUpFormErrorHandler(error.message);
       setError(handledError.field, handledError.error);
     } else {
+      renderToast({customization: ECustomization.success, message: 'Check your email for verification!'});
       setSuccess(true);
     }
   }
@@ -75,7 +75,6 @@ export default function SignupForm() {
         {errors.username && <p className="error">{errors.username.message}</p>}
         {errors.password && <p className="error">{errors.password.message}</p>}
         {errors.confirmPassword && <p className="error">{errors.confirmPassword.message}</p>}
-        {success && <p className="success">User registered successfully!</p>}
       </div>
     </form>
   );
